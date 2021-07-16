@@ -1,14 +1,17 @@
 
 # Postfix 教学文档
-> 参考地址：https://wiki.centos.org/zh/HowTos/postfix
-### 1. 引言
+> 参考地址：https://wiki.centos.org/zh/HowTos/postfix  
+
+### 1. 引言  
+
 这篇文章的对像是希望设置一台基本邮件服务器的初学者。拥有基本系统管理知识会有帮助，而能够安装软件及编辑配置文件是必须的。这篇文章是针对 CentOS 5 所撰写的，但亦应该适用於更早版本。其后版本也许会有差异。
 
 一台邮件服务器的设置可以有很多不同的实例和组合（多至不能在此尽录），因此这篇文章为你作了一些基本的选择，例如我们将会采用的软件（postfix 及 dovecot）。其它选项则需要用户更改，例如你的网络地址及域名。虚拟网域或用户等高级选项已超越了这篇文章的范畴，因而不会在这里处理。
 
 这篇文章采用 postfix 作为邮件传输代理（MTA）。dovecot 是用来容让用户通过 imap 或 pop 协议来访问他们的邮件。我们会假设域名是 example.com，它应该由读者更改，这可以是给一台正式邮件服务器用的真实域名，或者只是供内部邮件服务器用的虚构域名。我们假设实体的邮件服务器（主机）是 mail.example.com，并且位於 192.168.0.1 这个私人 IP 地址（这应该按读者的需要作出修改）。这台邮件服务器将会通过标准的系统帐户来提供邮件帐户，而用户将会利用他们的系统帐户及口令来访问他们的邮件。我们会假设有一位用户名叫 John Smith，它拥有一个名为 john 的系统帐户。
 
-### 2. 安装
+### 2. 安装  
+
 我们首先要做的事情就是安装所需的软件。最简单的做法就是在命令行上采用 yum：
 
 
@@ -22,10 +25,12 @@ yum install postfix dovecot
 yum remove sendmail
 请留意 CentOS 5 的缺省 MTA 是 sendmail。要是你没有把 postfix 改为缺省的 MTA，更新 postfix 时也许会把 sendmail 恢复为缺省的 MTA。
 
-### 3. 设置
+### 3. 设置  
+
 接下来我们需要设置邮件服务器的各部份。
 
-#### 3.1. Postfix
+#### 3.1. Postfix  
+
 postfix 的配置文件是存储在 /etc/postfix 之内。postfix 的两个主要配置文件是 master.cf 及 main.cf，虽然我们在这里只会处理 main.cf。我们会首先在 main.cf 配置文件内作出添加及修改。以下内容需要被添加、编辑或解除注释：
 
 ```
@@ -59,7 +64,8 @@ relay_domains：这是本系统会把邮件转寄到的网域的清单。通过�
 
 home_mailbox：它设置信箱相对用户根目录的路径，以及指定要采用的信箱格式。postfix 同时支持 Maildir 及 mbox 格式，而我们鼓励读者阅读有关每个格式的优点。然而，在这篇文章内我们选用了 Maildir 格式（一个尾随的斜线代表 Maildir 格式。要指定 mbox 格式，读者需要采用 home_mailbox = Mailbox）。
 
-#### 3.2. Dovecot
+#### 3.2. Dovecot  
+
 dovecot 的配置文件位於 /etc/dovecot.conf。以下内容需要被添加、编辑或解除注释：
 
 ```
@@ -83,14 +89,16 @@ login_process_size：CentOS 5.1 的发行注记声称「当 x86_64 内核上的 
 
 关于 dovecot 及 C6 的备注：CentOS 6 把配置文件转到 /etc/dovecot/dovecot.conf。Dovecot 在不必对配置文件作出任何修改的情况下已经能引导及自动聆听 pop3(s) 和 imap(s) 端口上的连接。你很可能要作出修改来迎合你的环境。
 
-#### 3.3. 创建用户的信箱
+#### 3.3. 创建用户的信箱  
+
 接著我们须要在每位用户的根目录内置立一个信箱及设置适的权限，因此以 john 这个用户为例：
 
 ```
 mkdir /home/john/Maildir
 chmod -R 700 /home/john/Maildir 
 ```
-#### 3.4. 别名
+#### 3.4. 别名  
+
 我们快要完成了。我们已经为以 john 登录的 John Smith 用户创建了一个邮件帐户。他的电邮地址是 john@example.com 。然而，John 或许会希望通过 jsmith@example.com （或者其它别名）接收邮件。我们可以利用系统的别名文件（postfix 缺省使用 /etc/aliases）为 John 设置一个别名来达至这个目的。我们亦可以为其它用户加入别名，譬如我们可以在 /etc/aliases 加入以下内容，将 root 的电邮转发给 John：
 
 ```
