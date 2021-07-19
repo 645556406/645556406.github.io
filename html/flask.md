@@ -76,7 +76,7 @@ pip install flask==1.1.1
 应该引用 from flask import Blueprint  
 
 ### 4、Flask注册路由的两种方式  
-1、装饰器
-@app.route('/')
-2、add_url_rule
-app.add_url_rule('/', view_func=hello) # 这里的hello是一个视图函数
+1、装饰器  
+@app.route('/')  
+2、add_url_rule  
+app.add_url_rule('/', view_func=hello) # 这里的hello是一个视图函数 
