@@ -17,6 +17,22 @@ AppContent 应用上下文包括：
 - Request和g的生命周期为一次请求期间，当请求完成后，生命周期也就完结了。  
 - Session就是传统意义上的session了。只要还未失效，那么不同的请求会共用同样的session。  
 
+# Flask数据库使用 SQLAlchemy  
+## SQLAlchemy()分页器paginate方法  
+```
+# 首页
+@blog_bp.route('/', endpoint='index')
+def index():
+    #获取页数
+    page = request.args.get('page',1)
+    paginate = Article.query.paginate(page=int(page),per_page=3)
+ 
+    # articles = Article.query.all()
+    # uname = request.cookies.get('uname')
+    # print(uname)
+    uname = session.get('uname')
+    return render_template('index.html', paginate=paginate, uname=uname)
+```
 
 # Flask使用遇到的问题  
 ### 1、flask_wtf表单验证始终不通过  
