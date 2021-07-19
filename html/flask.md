@@ -1,3 +1,23 @@
+# Flask核心机制  
+
+### Flask的上下文对象  
+
+> flask有两种Content(上下文)，请求上下文，应用上下文  
+
+RequestContent请求上下文包括：
+-  Request请求的对象，封装了Http请求（environ）的内容  
+-  Session根据请求中的cookie，重新载入访问者相关的会话信息    
+
+AppContent 应用上下文包括：
+- g 处理请求时用作临时存储的对象，每次请求都会重设这个变量  
+- current_app 当前激活程序的程序实例  
+
+生命周期  
+- current_app的生命周期最长，只要当前程序实例还在运行，都不会失效。  
+- Request和g的生命周期为一次请求期间，当请求完成后，生命周期也就完结了。  
+- Session就是传统意义上的session了。只要还未失效，那么不同的请求会共用同样的session。  
+
+
 # Flask使用遇到的问题  
 ### 1、flask_wtf表单验证始终不通过  
 注意：flask-wtf模块是携带csrf校验的，只是需要开启。在flask form中默认csrf_token 是没有开启的，需要我们手动去启动form表单的csrf_token。  
