@@ -32,4 +32,6 @@ orale hard  nofile 65536
 # See rhbz #432903 for reasoning.
 
 * soft         nproc            65536
-```
+```  
+### 查看java进程开启的线程数量  
+`ps -ef|grep java|awk '{ print $2 }'|xargs -I {} top -Hp {} -b -n 1 >> 1.log`
