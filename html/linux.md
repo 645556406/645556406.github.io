@@ -34,4 +34,10 @@ orale hard  nofile 65536
 * soft         nproc            65536
 ```  
 ### 查看java进程开启的线程数量  
-`ps -ef|grep java|awk '{ print $2 }'|xargs -I {} top -Hp {} -b -n 1 >> 1.log`
+`ps -ef|grep java|awk '{ print $2 }'|xargs -I {} top -Hp {} -b -n 1 >> 1.log`  
+
+### 查看指定pid的进程开启的线程数量  
+```
+top -Hp ${pid} -b -n 1 | grep -i threading  
+# 例如：top -Hp 32091 -b -n 1 | grep -i threads  
+```
