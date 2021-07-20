@@ -46,4 +46,11 @@ top -Hp ${pid} -b -n 1 | grep -i threading
 ```
 #根据第三列进行降序排列，-k3代表第三列，-rn代表降序
 sort -k3 -rn
+```  
+### pstree安装  
+```
+#ubuntu/debian
+apt-get install psmisc
+#centos
+yum install psmisc  
 ```
