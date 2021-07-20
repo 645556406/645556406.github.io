@@ -40,4 +40,10 @@ orale hard  nofile 65536
 ```
 top -Hp ${pid} -b -n 1 | grep -i threading  
 # 例如：top -Hp 32091 -b -n 1 | grep -i threads  
+```  
+### 根据指定列排序 
+ 
+```
+#根据第三列进行降序排列，-k3代表第三列，-rn代表降序
+sort -k3 -rn
 ```
