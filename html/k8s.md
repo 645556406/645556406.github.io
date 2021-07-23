@@ -26,7 +26,7 @@ health        doubao-health-accesstoken-prod-5f89494b6f-qm6jm                   
 health        doubao-health-product-lib-prod-7d9d5dd7c6-vg24x                   0/1       Pending            0          4h  
 ```
    
-![表现错误的图片](../img/rancher异常图片.png)
+![表现错误的图片]("这个图里面没有数据"../img/rancher异常图片.png)
 
 解决办法:  
 - 找到对应的容器然后直接docker rm -f 容器id
