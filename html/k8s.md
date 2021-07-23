@@ -12,7 +12,7 @@
 
 错误表现(CrashLoopBackOff)：  
 
-    ```
+```
     ai            doubao-ai-core-prod-74697999b7-cwqhp                              0/1       CrashLoopBackOff   223        19h  
     commession    doubao-commession-secretary-prod-9cbbf6f76-wzwfm                  0/1       CrashLoopBackOff   223        19h  
     contract      doubao-contract-receive-data-prod-65cc6f568c-9g8jm                0/1       CrashLoopBackOff   224        19h  
@@ -24,7 +24,7 @@
     finance       doubao-finance-data-transfer-prod-88f878945-zdl9n                 0/1       CrashLoopBackOff   33         2h  
     health        doubao-health-accesstoken-prod-5f89494b6f-qm6jm                   0/1       CrashLoopBackOff   222        19h  
     health        doubao-health-product-lib-prod-7d9d5dd7c6-vg24x                   0/1       Pending            0          4h  
-    ```
+```
    
 ![表现错误的图片](../img/rancher异常图片.png)
 
