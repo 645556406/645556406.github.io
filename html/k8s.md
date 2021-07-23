@@ -1,13 +1,15 @@
 # 遇到的问题
-### Killing container with id docker://log-collector:Need to kill Pod  
+> ### Killing container with id docker://log-collector:Need to kill Pod  
 问题原因：  
 - 这个问题是Kubernetes偶发的BUG    
 
 解决办法： 
 - kubectl delete pod xxxxxx --grace-period=0 --force  
 
-### cannot join network of a non running container: 3984a6f59a3b015e85f6971deae08b5871c849de3fb6156189efd983a06dae22  
+> ### cannot join network of a non running container: 3984a6f59a3b015e85f6971deae08b5871c849de3fb6156189efd983a06dae22  
+
 问题原因：  
+
     这个是rancher部署的k8s的ipsec网络组件出现问题, 表现为故障节点的ipsec容器不能docker exec -it 容器id /bin/bash进去容器,一个ipsec unhealthy, 然后渐渐的所有的ipsec都ipsec unhealthy，然后看到rancher k8s UI界面点开ipsec提示Degraded(降级)，然后所有的网络组件都被降级了  
 
 错误表现(CrashLoopBackOff)：  
@@ -25,7 +27,8 @@ finance       doubao-finance-data-transfer-prod-88f878945-zdl9n                 
 health        doubao-health-accesstoken-prod-5f89494b6f-qm6jm                   0/1       CrashLoopBackOff   222        19h  
 health        doubao-health-product-lib-prod-7d9d5dd7c6-vg24x                   0/1       Pending            0          4h  
 ```
-   
+> 如果有问题，这个图片中是没有数据的，图表中显示“连接中”  
+
 ![表现错误的图片](../img/rancher异常图片.png)
 
 解决办法:  
