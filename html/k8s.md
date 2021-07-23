@@ -1,4 +1,4 @@
-# 遇到的问题  
+# Kubernetes中遇到的问题  
 
 > ### Killing container with id docker://log-collector:Need to kill Pod   
 
