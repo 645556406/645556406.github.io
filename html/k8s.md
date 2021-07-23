@@ -12,7 +12,9 @@
 
 问题原因：  
 
-    这个是rancher部署的k8s的ipsec网络组件出现问题, 表现为故障节点的ipsec容器不能docker exec -it 容器id /bin/bash进去容器,一个ipsec unhealthy, 然后渐渐的所有的ipsec都ipsec unhealthy，然后看到rancher k8s UI界面点开ipsec提示Degraded(降级)，然后所有的网络组件都被降级了  
+    这个是rancher部署的k8s的ipsec网络组件出现问题, 表现为故障节点的ipsec容器不能docker exec -it 容器id /bin/bash进去容器,  
+    一个ipsec unhealthy, 然后渐渐的所有的ipsec都ipsec unhealthy，然后看到rancher k8s UI界面点开ipsec提示Degraded(降级)，  
+    然后所有的网络组件都被降级了  
 
 错误表现(CrashLoopBackOff)：  
 
