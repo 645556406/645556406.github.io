@@ -25,6 +25,7 @@ spring.datasource.password=MyPass@123
 ```  
 
 > 创建表  
+
 ```mysql
 /*
  Navicat Premium Data Transfer
