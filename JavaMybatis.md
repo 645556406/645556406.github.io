@@ -1,5 +1,6 @@
 # Java集成Mybatis
-> pom.xml引入mybatis
+> pom.xml引入mybatis  
+
 ```
         <!--mybatis起步依赖-->
         <dependency>
