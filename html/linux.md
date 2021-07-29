@@ -53,4 +53,25 @@ sort -k3 -rn
 apt-get install psmisc
 #centos
 yum install psmisc  
+```  
+### Linux强制踢人命令  
 ```
+Linux中root用户可以T掉其他登录的用户，包括登录的用户，也可以T掉自己。
+
+用who命令查看登录的用户
+
+[admin@localhost ~]$ who
+admin    pts/2        2011-06-13 16:22 (192.168.0.89)
+admin    pts/3        2011-06-13 09:59 (192.168.0.109)
+root     pts/4        2011-06-13 15:44 (192.168.0.109)
+admin    pts/5        2011-06-13 16:22 (192.168.0.212)
+
+以上是登录系统的相关用户已经登录的时间ip等。
+
+
+
+踢人命令：pkill -kill -t tty
+
+例如我现在想踢出192.168.0.89这个用户则：pkill -kill -t pts/2即可
+```  
+
