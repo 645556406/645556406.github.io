@@ -1,5 +1,6 @@
 # Java集成Mybatis
-> pom.xml引入mybatis
+> pom.xml引入mybatis  
+
 ```
         <!--mybatis起步依赖-->
         <dependency>
@@ -24,6 +25,7 @@ spring.datasource.password=MyPass@123
 ```  
 
 > 创建表  
+
 ```mysql
 /*
  Navicat Premium Data Transfer
