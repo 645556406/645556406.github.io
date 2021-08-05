@@ -196,6 +196,175 @@
             
 
   
+    <article id="post-Java集成Mybatis" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+  
+  
+    <h1 itemprop="name">
+	
+	  <a class="article-title" href="/2021/08/05/Java%E9%9B%86%E6%88%90Mybatis/" target="_blank">Java集成Mybatis</a>
+  
+    </h1>
+  
+
+
+  
+  
+<a href="/2021/08/05/Java%E9%9B%86%E6%88%90Mybatis/" class="archive-article-date">
+        <time datetime="2021-08-05T11:38:37.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-08-05</time>
+</a>
+
+  
+  
+    
+
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <h1 id="Java集成Mybatis"><a href="#Java集成Mybatis" class="headerlink" title="Java集成Mybatis"></a>Java集成Mybatis</h1><blockquote>
+<p>pom.xml引入mybatis  </p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--mybatis起步依赖--&gt;</span><br><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;org.mybatis.spring.boot&lt;/groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;mybatis-spring-boot-starter&lt;/artifactId&gt;</span><br><span class="line">    &lt;version&gt;1.2.0&lt;/version&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br><span class="line">&lt;!--MySQL连接驱动--&gt;</span><br><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;mysql&lt;/groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;mysql-connector-java&lt;/artifactId&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>在配置文件application.properties中添加数据库坐标   </p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"># MySQL数据库配置文件</span><br><span class="line">spring.datasource.driver-class-name=com.mysql.jdbc.Driver</span><br><span class="line">spring.datasource.url=jdbc:mysql://192.168.1.218:3306/test?useUnicode=true&amp;characterEncoding=utf8</span><br><span class="line">spring.datasource.username=root</span><br><span class="line">spring.datasource.password=MyPass@123</span><br><span class="line">```  </span><br><span class="line"></span><br><span class="line">&gt; 创建表  </span><br><span class="line"></span><br><span class="line">```mysql</span><br><span class="line">/*</span><br><span class="line"> Navicat Premium Data Transfer</span><br><span class="line"></span><br><span class="line"> Source Server         : 192.168.1.218</span><br><span class="line"> Source Server Type    : MySQL</span><br><span class="line"> Source Server Version : 80023</span><br><span class="line"> Source Host           : 192.168.1.218:3306</span><br><span class="line"> Source Schema         : test</span><br><span class="line"></span><br><span class="line"> Target Server Type    : MySQL</span><br><span class="line"> Target Server Version : 80023</span><br><span class="line"> File Encoding         : 65001</span><br><span class="line"></span><br><span class="line"> Date: 01/05/2021 22:21:52</span><br><span class="line">*/</span><br><span class="line"></span><br><span class="line">SET NAMES utf8mb4;</span><br><span class="line">SET FOREIGN_KEY_CHECKS = 0;</span><br><span class="line"></span><br><span class="line">-- ----------------------------</span><br><span class="line">-- Table structure for user</span><br><span class="line">-- ----------------------------</span><br><span class="line">DROP TABLE IF EXISTS `user`;</span><br><span class="line">CREATE TABLE `user`  (</span><br><span class="line">  `id` int(0) NOT NULL,</span><br><span class="line">  `username` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,</span><br><span class="line">  `password` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,</span><br><span class="line">  `name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,</span><br><span class="line">  PRIMARY KEY (`id`) USING BTREE</span><br><span class="line">) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;</span><br><span class="line"></span><br><span class="line">-- ----------------------------</span><br><span class="line">-- Records of user</span><br><span class="line">-- ----------------------------</span><br><span class="line">INSERT INTO `user` VALUES (1, &#x27;zhangsan&#x27;, &#x27;123&#x27;, &#x27;张三&#x27;);</span><br><span class="line">INSERT INTO `user` VALUES (2, &#x27;lisi&#x27;, &#x27;123&#x27;, &#x27;李四&#x27;);</span><br><span class="line"></span><br><span class="line">SET FOREIGN_KEY_CHECKS = 1;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>创建实体Bean  </p>
+</blockquote>
+<pre><code class="java">package com.doubao.learn.helloworld.domain;
+
+public class User &#123;
+    private Integer id;
+    private String username;
+    private String password;
+    private String name;
+
+    public Integer getId() &#123;
+        return id;
+    &#125;
+
+    public void setId(Integer id) &#123;
+        this.id = id;
+    &#125;
+
+    public String getUsername() &#123;
+        return username;
+    &#125;
+
+    public void setUsername(String username) &#123;
+        this.username = username;
+    &#125;
+
+    public String getPassword() &#123;
+        return password;
+    &#125;
+
+    public void setPassword(String password) &#123;
+        this.password = password;
+    &#125;
+
+    public String getName() &#123;
+        return name;
+    &#125;
+
+    public void setName(String name) &#123;
+        this.name = name;
+    &#125;
+
+    @Override
+    public String toString() &#123;
+        return &quot;User&#123;&quot; +
+                &quot;id=&quot; + id +
+                &quot;, username=&#39;&quot; + username + &#39;\&#39;&#39; +
+                &quot;, password=&#39;&quot; + password + &#39;\&#39;&#39; +
+                &quot;, name=&#39;&quot; + name + &#39;\&#39;&#39; +
+                &#39;&#125;&#39;;
+    &#125;
+&#125;
+</code></pre>
+<blockquote>
+<p>创建mapper映射关系  </p>
+</blockquote>
+<pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;!DOCTYPE mapper PUBLIC &quot;-//mybatis.org//DTD Mapper 3.0//EN&quot; &quot;http://mybatis.org/dtd/mybatis-3-mapper.dtd&quot;&gt;
+&lt;mapper namespace=&quot;com.doubao.learn.helloworld.mapper.UserMapper&quot;&gt;
+    &lt;select id=&quot;queryUserList&quot; resultType=&quot;user&quot;&gt;
+        select * from user
+    &lt;/select&gt;
+&lt;/mapper&gt;
+</code></pre>
+<blockquote>
+<p>创建接口  </p>
+</blockquote>
+<pre><code class="java">package com.doubao.learn.helloworld.mapper;
+
+import com.doubao.learn.helloworld.domain.User;
+
+import java.util.List;
+
+public interface UserMapper &#123;
+    public List&lt;User&gt; queryUserList();
+&#125;
+</code></pre>
+<blockquote>
+<p>配置Mybatis信息(让Mybaits和Spring boot产生关联)  </p>
+</blockquote>
+<pre><code class="shell"># 配置mybatis信息
+# spring集成Mybatis环境
+# pojo别名扫描包
+mybatis.type-aliases-package=com.doubao.learn.helloworld.domain
+mybatis.mapper-locations=classpath:mapper/*Mapper.xml
+</code></pre>
+
+    
+
+    
+
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    
+    
+
+    
+    <p class="article-more-link">
+      <a class="article-more-a" href="/2021/08/05/Java%E9%9B%86%E6%88%90Mybatis/">展开全文 >></a>
+    </p>
+    
+
+    
+    <div class="clearfix"></div>
+  </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-Java" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     

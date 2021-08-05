@@ -6,15 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>Archives: 2021 | Hexo</title>
+  <title>Java集成Mybatis | Hexo</title>
   <meta name="generator" content="hexo-theme-yilia-plus">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://example.com/archives/2021/index.html">
+  <meta name="description" content="Java集成Mybatis pom.xml引入mybatis    1234567891011&lt;!--mybatis起步依赖--&gt;&lt;dependency&gt;    &lt;groupId&gt;org.mybatis.spring.boot&lt;&#x2F;groupId&gt;    &lt;artifactId&gt;mybatis-spring-boot-starter&lt;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java集成Mybatis">
+<meta property="og:url" content="http://example.com/2021/08/05/Java%E9%9B%86%E6%88%90Mybatis/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="Java集成Mybatis pom.xml引入mybatis    1234567891011&lt;!--mybatis起步依赖--&gt;&lt;dependency&gt;    &lt;groupId&gt;org.mybatis.spring.boot&lt;&#x2F;groupId&gt;    &lt;artifactId&gt;mybatis-spring-boot-starter&lt;">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-08-05T11:38:37.000Z">
+<meta property="article:modified_time" content="2021-08-05T11:38:56.831Z">
 <meta property="article:author" content="Ye.wang">
 <meta name="twitter:card" content="summary">
   
@@ -189,118 +193,313 @@
               class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
+            <article id="post-Java集成Mybatis" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
   
   
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2021" class="archive-year">2021</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
+    <h1 class="article-title" itemprop="name">
+      Java集成Mybatis
+    </h1>
+  
+
+
+  
+  
 <a href="/2021/08/05/Java%E9%9B%86%E6%88%90Mybatis/" class="archive-article-date">
         <time datetime="2021-08-05T11:38:37.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-08-05</time>
 </a>
 
+  
+  
+    
+<div style="margin-top:10px;">
+  <span class="post-time">
+    <span class="post-meta-item-icon">
+      <!-- fonts.scss -->
+      <!-- 百度字体平台:http://fontstore.baidu.com/static/editor/index.html -->
+      <i class="icon-statistics"></i>
+      <span class="post-meta-item-text"> 字数统计:</span>
+      <span class="post-count">578字</span>
+    </span>
+  </span>
+
+  <span class="post-time">
+    &nbsp; | &nbsp;
+    <span class="post-meta-item-icon">
+      <i class="icon-book icon"></i>
+      <span class="post-meta-item-text"> 阅读时长≈</span>
+      <span class="post-count">3分</span>
+    </span>
+  </span>
+</div>
+
+
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <h1 id="Java集成Mybatis"><a href="#Java集成Mybatis" class="headerlink" title="Java集成Mybatis"></a>Java集成Mybatis</h1><blockquote>
+<p>pom.xml引入mybatis  </p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--mybatis起步依赖--&gt;</span><br><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;org.mybatis.spring.boot&lt;/groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;mybatis-spring-boot-starter&lt;/artifactId&gt;</span><br><span class="line">    &lt;version&gt;1.2.0&lt;/version&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br><span class="line">&lt;!--MySQL连接驱动--&gt;</span><br><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;mysql&lt;/groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;mysql-connector-java&lt;/artifactId&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>在配置文件application.properties中添加数据库坐标   </p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"># MySQL数据库配置文件</span><br><span class="line">spring.datasource.driver-class-name=com.mysql.jdbc.Driver</span><br><span class="line">spring.datasource.url=jdbc:mysql://192.168.1.218:3306/test?useUnicode=true&amp;characterEncoding=utf8</span><br><span class="line">spring.datasource.username=root</span><br><span class="line">spring.datasource.password=MyPass@123</span><br><span class="line">```  </span><br><span class="line"></span><br><span class="line">&gt; 创建表  </span><br><span class="line"></span><br><span class="line">```mysql</span><br><span class="line">/*</span><br><span class="line"> Navicat Premium Data Transfer</span><br><span class="line"></span><br><span class="line"> Source Server         : 192.168.1.218</span><br><span class="line"> Source Server Type    : MySQL</span><br><span class="line"> Source Server Version : 80023</span><br><span class="line"> Source Host           : 192.168.1.218:3306</span><br><span class="line"> Source Schema         : test</span><br><span class="line"></span><br><span class="line"> Target Server Type    : MySQL</span><br><span class="line"> Target Server Version : 80023</span><br><span class="line"> File Encoding         : 65001</span><br><span class="line"></span><br><span class="line"> Date: 01/05/2021 22:21:52</span><br><span class="line">*/</span><br><span class="line"></span><br><span class="line">SET NAMES utf8mb4;</span><br><span class="line">SET FOREIGN_KEY_CHECKS = 0;</span><br><span class="line"></span><br><span class="line">-- ----------------------------</span><br><span class="line">-- Table structure for user</span><br><span class="line">-- ----------------------------</span><br><span class="line">DROP TABLE IF EXISTS `user`;</span><br><span class="line">CREATE TABLE `user`  (</span><br><span class="line">  `id` int(0) NOT NULL,</span><br><span class="line">  `username` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,</span><br><span class="line">  `password` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,</span><br><span class="line">  `name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,</span><br><span class="line">  PRIMARY KEY (`id`) USING BTREE</span><br><span class="line">) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;</span><br><span class="line"></span><br><span class="line">-- ----------------------------</span><br><span class="line">-- Records of user</span><br><span class="line">-- ----------------------------</span><br><span class="line">INSERT INTO `user` VALUES (1, &#x27;zhangsan&#x27;, &#x27;123&#x27;, &#x27;张三&#x27;);</span><br><span class="line">INSERT INTO `user` VALUES (2, &#x27;lisi&#x27;, &#x27;123&#x27;, &#x27;李四&#x27;);</span><br><span class="line"></span><br><span class="line">SET FOREIGN_KEY_CHECKS = 1;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>创建实体Bean  </p>
+</blockquote>
+<pre><code class="java">package com.doubao.learn.helloworld.domain;
+
+public class User &#123;
+    private Integer id;
+    private String username;
+    private String password;
+    private String name;
+
+    public Integer getId() &#123;
+        return id;
+    &#125;
+
+    public void setId(Integer id) &#123;
+        this.id = id;
+    &#125;
+
+    public String getUsername() &#123;
+        return username;
+    &#125;
+
+    public void setUsername(String username) &#123;
+        this.username = username;
+    &#125;
+
+    public String getPassword() &#123;
+        return password;
+    &#125;
+
+    public void setPassword(String password) &#123;
+        this.password = password;
+    &#125;
+
+    public String getName() &#123;
+        return name;
+    &#125;
+
+    public void setName(String name) &#123;
+        this.name = name;
+    &#125;
+
+    @Override
+    public String toString() &#123;
+        return &quot;User&#123;&quot; +
+                &quot;id=&quot; + id +
+                &quot;, username=&#39;&quot; + username + &#39;\&#39;&#39; +
+                &quot;, password=&#39;&quot; + password + &#39;\&#39;&#39; +
+                &quot;, name=&#39;&quot; + name + &#39;\&#39;&#39; +
+                &#39;&#125;&#39;;
+    &#125;
+&#125;
+</code></pre>
+<blockquote>
+<p>创建mapper映射关系  </p>
+</blockquote>
+<pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;!DOCTYPE mapper PUBLIC &quot;-//mybatis.org//DTD Mapper 3.0//EN&quot; &quot;http://mybatis.org/dtd/mybatis-3-mapper.dtd&quot;&gt;
+&lt;mapper namespace=&quot;com.doubao.learn.helloworld.mapper.UserMapper&quot;&gt;
+    &lt;select id=&quot;queryUserList&quot; resultType=&quot;user&quot;&gt;
+        select * from user
+    &lt;/select&gt;
+&lt;/mapper&gt;
+</code></pre>
+<blockquote>
+<p>创建接口  </p>
+</blockquote>
+<pre><code class="java">package com.doubao.learn.helloworld.mapper;
+
+import com.doubao.learn.helloworld.domain.User;
+
+import java.util.List;
+
+public interface UserMapper &#123;
+    public List&lt;User&gt; queryUserList();
+&#125;
+</code></pre>
+<blockquote>
+<p>配置Mybatis信息(让Mybaits和Spring boot产生关联)  </p>
+</blockquote>
+<pre><code class="shell"># 配置mybatis信息
+# spring集成Mybatis环境
+# pojo别名扫描包
+mybatis.type-aliases-package=com.doubao.learn.helloworld.domain
+mybatis.mapper-locations=classpath:mapper/*Mapper.xml
+</code></pre>
+
+    
+
+    
+    <div class="page-reward">
+      <a href="javascript:void(0);" class="page-reward-btn tooltip-top" target="_self">
+        <div class="tooltip tooltip-east">
+          <span class="tooltip-item">
+            赏
+          </span>
+          <span class="tooltip-content">
+            <span class="tooltip-text">
+              <span class="tooltip-inner">
+                <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i
+                    class="icon icon-quo-right"></i></p>
+                <div class="reward-box">
+                  
+                  <div class="reward-box-item">
+                    <img class="reward-img" src="/img/alipay.png">
+                    <span class="reward-type">支付宝</span>
+                  </div>
+                  
+                  
+                  <div class="reward-box-item">
+                    <img class="reward-img" src="/img/weixin.png">
+                    <span class="reward-type">微信</span>
+                  </div>
+                  
+                </div>
+              </span>
+            </span>
+          </span>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2021/08/05/Java%E9%9B%86%E6%88%90Mybatis/" target="_blank">Java集成Mybatis</a>
-  
-    </h1>
-  
+      </a>
+    </div>
+    
 
-
-        <div class="article-info info-on-right">
+    
+    <div class="declare"> 
+      <ul class="post-copyright">
+        <li>
+          <strong>本文作者：</strong>
+          Ye.wang
+        </li>
+        <li>
+          <strong>本文链接：</strong>
+          <a href="http://example.com/2021/08/05/Java集成Mybatis/" title="Java集成Mybatis" target="_blank">http://example.com/2021/08/05/Java集成Mybatis/</a>
+        </li>
+        
+        <li>
+          <strong>版权声明： </strong>
           
-          
+          本博客所有文章除特别声明外，均采用 <a href="https://github.com/JoeyBling/hexo-theme-yilia-plus/blob/master/LICENSE" rel="external nofollow" target="_blank">MIT</a> 许可协议。转载请注明出处！
+        </li>
+        
+      </ul>
+    </div>
+    
 
+  </div>
+  <div class="article-info article-info-index">
+    
+    
+    
+
+    
+
+    
+    
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <!-- <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a> -->
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+     <!-- <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2021/08/05/Java%E9%9B%86%E6%88%90Mybatis/" alt="微信分享二维码"> -->
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+
+    
+    <div class="clearfix"></div>
+  </div>
   </div>
 </article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2021/08/05/Java/" class="archive-article-date">
-        <time datetime="2021-08-05T10:06:55.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-08-05</time>
-</a>
 
+
+<nav id="article-nav">
+  
+  
+    <a href="/2021/08/05/Java/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Java</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2021/08/05/Java/" target="_blank">Java</a>
-  
-    </h1>
-  
+        
+        
+    </div>
+</aside>
 
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2021/08/05/Flask/" class="archive-article-date">
-        <time datetime="2021-08-05T02:12:16.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-08-05</time>
-</a>
-
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2021/08/05/Flask/" target="_blank">Flask</a>
-  
-    </h1>
-  
 
 
-        <div class="article-info info-on-right">
-          
-          
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
 
-    
+
+
+
+
+
+
 
 
           </div>
@@ -329,8 +528,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: true,
