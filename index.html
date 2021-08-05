@@ -196,6 +196,85 @@
             
 
   
+    <article id="post-Java" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+  
+  
+    <h1 itemprop="name">
+	
+	  <a class="article-title" href="/2021/08/05/Java/" target="_blank">Java</a>
+  
+    </h1>
+  
+
+
+  
+  
+<a href="/2021/08/05/Java/" class="archive-article-date">
+        <time datetime="2021-08-05T10:06:55.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-08-05</time>
+</a>
+
+  
+  
+    
+
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <h1 id="Java中遇到的问题"><a href="#Java中遇到的问题" class="headerlink" title="Java中遇到的问题"></a>Java中遇到的问题</h1><h3 id="Linux执行Jar包：-no-main-manifest-attribute"><a href="#Linux执行Jar包：-no-main-manifest-attribute" class="headerlink" title="Linux执行Jar包： no main manifest attribute"></a>Linux执行Jar包： no main manifest attribute</h3><p>问题原因:pom.xml配置的问题，maven插件配置错误    </p>
+<blockquote>
+<p>解决办法:  </p>
+</blockquote>
+<p>pom.xml中添加下面的配置</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;build&gt;</span><br><span class="line">    &lt;plugins&gt;</span><br><span class="line">        &lt;plugin&gt;</span><br><span class="line">            &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;</span><br><span class="line">            &lt;artifactId&gt;spring-boot-maven-plugin&lt;/artifactId&gt;</span><br><span class="line">            &lt;configuration&gt;</span><br><span class="line">                &lt;executable&gt;true&lt;/executable&gt;</span><br><span class="line">            &lt;/configuration&gt;</span><br><span class="line">        &lt;/plugin&gt;</span><br><span class="line">    &lt;/plugins&gt;</span><br><span class="line">&lt;/build&gt;</span><br></pre></td></tr></table></figure>
+    
+
+    
+
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    
+    
+
+    
+    <p class="article-more-link">
+      <a class="article-more-a" href="/2021/08/05/Java/">展开全文 >></a>
+    </p>
+    
+
+    
+    <div class="clearfix"></div>
+  </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-Flask" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
