@@ -6,17 +6,23 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://zfbdata.com">
-  <title>Archives: 2021/8 | Hexo</title>
+  <title>kubernetes | Hexo</title>
   <meta name="generator" content="hexo-theme-yilia-plus">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="https://zfbdata.com/archives/2021/08/index.html">
+  <meta name="description" content="Kubernetes中遇到的问题 Killing container with id docker:&#x2F;&#x2F;log-collector:Need to kill Pod 问题原因：    这个问题是Kubernetes偶发的BUG      解决办法：   kubectl delete pod xxxxxx –grace-period&#x3D;0 –force     cannot join network">
+<meta property="og:type" content="article">
+<meta property="og:title" content="kubernetes">
+<meta property="og:url" content="https://zfbdata.com/2021/08/06/kubernetes/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="Kubernetes中遇到的问题 Killing container with id docker:&#x2F;&#x2F;log-collector:Need to kill Pod 问题原因：    这个问题是Kubernetes偶发的BUG      解决办法：   kubectl delete pod xxxxxx –grace-period&#x3D;0 –force     cannot join network">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://zfbdata.com/2021/08/06/img/rancher%E5%BC%82%E5%B8%B8%E5%9B%BE%E7%89%87.png">
+<meta property="article:published_time" content="2021-08-06T05:41:11.000Z">
+<meta property="article:modified_time" content="2021-08-06T05:41:45.660Z">
 <meta property="article:author" content="Ye.wang">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://zfbdata.com/2021/08/06/img/rancher%E5%BC%82%E5%B8%B8%E5%9B%BE%E7%89%87.png">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -189,150 +195,244 @@
               class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
+            <article id="post-kubernetes" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
   
   
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2021" class="archive-year">2021</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
+    <h1 class="article-title" itemprop="name">
+      kubernetes
+    </h1>
+  
+
+
+  
+  
 <a href="/2021/08/06/kubernetes/" class="archive-article-date">
         <time datetime="2021-08-06T05:41:11.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-08-06</time>
 </a>
 
+  
+  
+    
+<div style="margin-top:10px;">
+  <span class="post-time">
+    <span class="post-meta-item-icon">
+      <!-- fonts.scss -->
+      <!-- 百度字体平台:http://fontstore.baidu.com/static/editor/index.html -->
+      <i class="icon-statistics"></i>
+      <span class="post-meta-item-text"> 字数统计:</span>
+      <span class="post-count">324字</span>
+    </span>
+  </span>
+
+  <span class="post-time">
+    &nbsp; | &nbsp;
+    <span class="post-meta-item-icon">
+      <i class="icon-book icon"></i>
+      <span class="post-meta-item-text"> 阅读时长≈</span>
+      <span class="post-count">1分</span>
+    </span>
+  </span>
+</div>
+
+
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <h1 id="Kubernetes中遇到的问题"><a href="#Kubernetes中遇到的问题" class="headerlink" title="Kubernetes中遇到的问题"></a>Kubernetes中遇到的问题</h1><blockquote>
+<h3 id="Killing-container-with-id-docker-log-collector-Need-to-kill-Pod"><a href="#Killing-container-with-id-docker-log-collector-Need-to-kill-Pod" class="headerlink" title="Killing container with id docker://log-collector:Need to kill Pod"></a>Killing container with id docker://log-collector:Need to kill Pod</h3></blockquote>
+<p>问题原因：  </p>
+<ul>
+<li>这个问题是Kubernetes偶发的BUG    </li>
+</ul>
+<p>解决办法： </p>
+<ul>
+<li>kubectl delete pod xxxxxx –grace-period=0 –force  </li>
+</ul>
+<blockquote>
+<h3 id="cannot-join-network-of-a-non-running-container-3984a6f59a3b015e85f6971deae08b5871c849de3fb6156189efd983a06dae22"><a href="#cannot-join-network-of-a-non-running-container-3984a6f59a3b015e85f6971deae08b5871c849de3fb6156189efd983a06dae22" class="headerlink" title="cannot join network of a non running container: 3984a6f59a3b015e85f6971deae08b5871c849de3fb6156189efd983a06dae22"></a>cannot join network of a non running container: 3984a6f59a3b015e85f6971deae08b5871c849de3fb6156189efd983a06dae22</h3></blockquote>
+<p>问题原因：  </p>
+<pre><code>这个是rancher部署的k8s的ipsec网络组件出现问题, 表现为故障节点的ipsec容器不能docker exec -it 容器id /bin/bash进去容器,  
+</code></pre>
+<p>一个ipsec unhealthy, 然后渐渐的所有的ipsec都ipsec unhealthy，然后看到rancher k8s UI界面点开ipsec提示Degraded(降级)，<br>然后所有的网络组件都被降级了  </p>
+<p>错误表现(CrashLoopBackOff)：  </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">ai            doubao-ai-core-prod-74697999b7-cwqhp                              0/1       CrashLoopBackOff   223        19h  </span><br><span class="line">commession    doubao-commession-secretary-prod-9cbbf6f76-wzwfm                  0/1       CrashLoopBackOff   223        19h  </span><br><span class="line">contract      doubao-contract-receive-data-prod-65cc6f568c-9g8jm                0/1       CrashLoopBackOff   224        19h  </span><br><span class="line">contract      doubao-contract-zazx-client2-prod-74c957b8b7-jfldv                0/1       CrashLoopBackOff   223        19h  </span><br><span class="line">default       whoami-deployment-5f4bdb7b46-5mqx6                                0/1       CrashLoopBackOff   49         4h  </span><br><span class="line">default       whoami-deployment-5f4bdb7b46-wxlvr                                0/1       CrashLoopBackOff   50         4h  </span><br><span class="line">finance       doubao-finance-data-transfer-prod-88f878945-n7lk2                 0/1       CrashLoopBackOff   34         2h  </span><br><span class="line">finance       doubao-finance-data-transfer-prod-88f878945-qklg9                 0/1       CrashLoopBackOff   10         34m  </span><br><span class="line">finance       doubao-finance-data-transfer-prod-88f878945-zdl9n                 0/1       CrashLoopBackOff   33         2h  </span><br><span class="line">health        doubao-health-accesstoken-prod-5f89494b6f-qm6jm                   0/1       CrashLoopBackOff   222        19h  </span><br><span class="line">health        doubao-health-product-lib-prod-7d9d5dd7c6-vg24x                   0/1       Pending            0          4h  </span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>如果有问题，这个图片中是没有数据的，图表中显示“连接中”  </p>
+</blockquote>
+<p><img src="../img/rancher%E5%BC%82%E5%B8%B8%E5%9B%BE%E7%89%87.png" alt="表现错误的图片"></p>
+<p>解决办法:  </p>
+<ul>
+<li>找到对应的容器然后直接docker rm -f 容器id</li>
+</ul>
+
+    
+
+    
+    <div class="page-reward">
+      <a href="javascript:void(0);" class="page-reward-btn tooltip-top" target="_self">
+        <div class="tooltip tooltip-east">
+          <span class="tooltip-item">
+            赏
+          </span>
+          <span class="tooltip-content">
+            <span class="tooltip-text">
+              <span class="tooltip-inner">
+                <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i
+                    class="icon icon-quo-right"></i></p>
+                <div class="reward-box">
+                  
+                  <div class="reward-box-item">
+                    <img class="reward-img" src="/img/alipay.png">
+                    <span class="reward-type">支付宝</span>
+                  </div>
+                  
+                  
+                  <div class="reward-box-item">
+                    <img class="reward-img" src="/img/weixin.png">
+                    <span class="reward-type">微信</span>
+                  </div>
+                  
+                </div>
+              </span>
+            </span>
+          </span>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2021/08/06/kubernetes/" target="_blank">kubernetes</a>
-  
-    </h1>
-  
+      </a>
+    </div>
+    
 
-
-        <div class="article-info info-on-right">
+    
+    <div class="declare"> 
+      <ul class="post-copyright">
+        <li>
+          <strong>本文作者：</strong>
+          Ye.wang
+        </li>
+        <li>
+          <strong>本文链接：</strong>
+          <a href="https://zfbdata.com/2021/08/06/kubernetes/" title="kubernetes" target="_blank">https://zfbdata.com/2021/08/06/kubernetes/</a>
+        </li>
+        
+        <li>
+          <strong>版权声明： </strong>
           
-          
+          本博客所有文章除特别声明外，均采用 <a href="https://github.com/JoeyBling/hexo-theme-yilia-plus/blob/master/LICENSE" rel="external nofollow" target="_blank">MIT</a> 许可协议。转载请注明出处！
+        </li>
+        
+      </ul>
+    </div>
+    
 
+  </div>
+  <div class="article-info article-info-index">
+    
+    
+    
+
+    
+
+    
+    
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <!-- <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a> -->
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+     <!-- <img src="//pan.baidu.com/share/qrcode?url=https://zfbdata.com/2021/08/06/kubernetes/" alt="微信分享二维码"> -->
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+
+    
+    <div class="clearfix"></div>
+  </div>
   </div>
 </article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2021/08/05/Java%E9%9B%86%E6%88%90Mybatis/" class="archive-article-date">
-        <time datetime="2021-08-05T11:38:37.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-08-05</time>
-</a>
 
+
+<nav id="article-nav">
+  
+  
+    <a href="/2021/08/05/Java%E9%9B%86%E6%88%90Mybatis/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Java集成Mybatis</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2021/08/05/Java%E9%9B%86%E6%88%90Mybatis/" target="_blank">Java集成Mybatis</a>
-  
-    </h1>
-  
+        
+        
+    </div>
+</aside>
 
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2021/08/05/Java/" class="archive-article-date">
-        <time datetime="2021-08-05T10:06:55.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-08-05</time>
-</a>
-
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2021/08/05/Java/" target="_blank">Java</a>
-  
-    </h1>
-  
 
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2021/08/05/Flask/" class="archive-article-date">
-        <time datetime="2021-08-05T02:12:16.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-08-05</time>
-</a>
-
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2021/08/05/Flask/" target="_blank">Flask</a>
-  
-    </h1>
-  
 
 
-        <div class="article-info info-on-right">
-          
-          
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
 
-    
+
+
+
+
 
 
           </div>
@@ -361,8 +461,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: true,
