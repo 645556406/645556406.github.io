@@ -240,18 +240,20 @@
     <h1 id="Kubernetes中遇到的问题"><a href="#Kubernetes中遇到的问题" class="headerlink" title="Kubernetes中遇到的问题"></a>Kubernetes中遇到的问题</h1><blockquote>
 <p>Killing container with id docker://log-collector:Need to kill Pod  </p>
 </blockquote>
-<p>问题原因：  </p>
 <ul>
+<li>问题原因：  </li>
+<li><ul>
 <li>这个问题是Kubernetes偶发的BUG    </li>
+</ul>
+</li>
 </ul>
 <p>解决办法： </p>
 <ul>
 <li>kubectl delete pod xxxxxx –grace-period=0 –force  </li>
 </ul>
 <blockquote>
-<p>cannot join network of a non running container: 3984a6f59a3b015e85f6971deae08b5871c849de3fb6156189efd983a06dae22  </p>
+<p>cannot join network of a non running container: 3984a6f59a3b015e85f6971deae08b5871c849de3fb6156189efd983a06dae22<br>问题原因：  </p>
 </blockquote>
-<p>问题原因：  </p>
 <pre><code>这个是rancher部署的k8s的ipsec网络组件出现问题, 表现为故障节点的ipsec容器不能docker exec -it 容器id /bin/bash进去容器,  
 </code></pre>
 <p>一个ipsec unhealthy, 然后渐渐的所有的ipsec都ipsec unhealthy，然后看到rancher k8s UI界面点开ipsec提示Degraded(降级)，<br>然后所有的网络组件都被降级了  </p>
