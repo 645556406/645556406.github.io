@@ -238,7 +238,8 @@
   <div class="article-entry" itemprop="articleBody">
     
     <h1 id="Kubernetes中遇到的问题"><a href="#Kubernetes中遇到的问题" class="headerlink" title="Kubernetes中遇到的问题"></a>Kubernetes中遇到的问题</h1><blockquote>
-<h3 id="Killing-container-with-id-docker-log-collector-Need-to-kill-Pod"><a href="#Killing-container-with-id-docker-log-collector-Need-to-kill-Pod" class="headerlink" title="Killing container with id docker://log-collector:Need to kill Pod"></a>Killing container with id docker://log-collector:Need to kill Pod</h3></blockquote>
+<p>Killing container with id docker://log-collector:Need to kill Pod  </p>
+</blockquote>
 <p>问题原因：  </p>
 <ul>
 <li>这个问题是Kubernetes偶发的BUG    </li>
@@ -248,7 +249,8 @@
 <li>kubectl delete pod xxxxxx –grace-period=0 –force  </li>
 </ul>
 <blockquote>
-<h3 id="cannot-join-network-of-a-non-running-container-3984a6f59a3b015e85f6971deae08b5871c849de3fb6156189efd983a06dae22"><a href="#cannot-join-network-of-a-non-running-container-3984a6f59a3b015e85f6971deae08b5871c849de3fb6156189efd983a06dae22" class="headerlink" title="cannot join network of a non running container: 3984a6f59a3b015e85f6971deae08b5871c849de3fb6156189efd983a06dae22"></a>cannot join network of a non running container: 3984a6f59a3b015e85f6971deae08b5871c849de3fb6156189efd983a06dae22</h3></blockquote>
+<p>cannot join network of a non running container: 3984a6f59a3b015e85f6971deae08b5871c849de3fb6156189efd983a06dae22  </p>
+</blockquote>
 <p>问题原因：  </p>
 <pre><code>这个是rancher部署的k8s的ipsec网络组件出现问题, 表现为故障节点的ipsec容器不能docker exec -it 容器id /bin/bash进去容器,  
 </code></pre>
